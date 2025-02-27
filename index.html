@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Web Components - WCAG Conformance Examples</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Accessible Web Components</h1>
+        <p>Examples of WCAG conformant web elements with accessibility as the main focus</p>
+    </header>
+
+    <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+            <li><a href="#button" class="nav-link">Button</a></li>
+            <li><a href="#text-input" class="nav-link">Text Input</a></li>
+            <li><a href="#checkboxes" class="nav-link">Checkboxes</a></li>
+            <li><a href="#select" class="nav-link">Dropdown/Select</a></li>
+            <li><a href="#progress" class="nav-link">Progress Bar</a></li>
+            <li><a href="#radio" class="nav-link">Radio Buttons</a></li>
+            <li><a href="#table" class="nav-link">Data Table</a></li>
+            <li><a href="#tabs" class="nav-link">Tabs</a></li>
+            <li><a href="#switch" class="nav-link">Switch</a></li>
+            <li><a href="#slider" class="nav-link">Slider</a></li>
+            <li><a href="#avatar" class="nav-link">Avatar</a></li>
+            <li><a href="#dialog" class="nav-link">Dialog</a></li>
+            <li><a href="#tooltip" class="nav-link">Tooltip</a></li>
+            <li><a href="#badge" class="nav-link">Badge/Chip</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="button" class="component">
+            <h2>Accessible Button</h2>
+            
+            <div class="example">
+                <button class="demo-button" type="button">Click Me</button>
+                
+                <div class="icon-button-container">
+                    <button class="icon-button" type="button" aria-label="Add to favorites">
+                        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="icon-button" type="button" aria-label="Share">
+                        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="icon-button" type="button" aria-label="Delete">
+                        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Buttons</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Buttons</h3>
+                    <ul>
+                        <li><strong>Perceivable:</strong> Buttons must be clearly visible with sufficient color contrast (WCAG 1.4.3)</li>
+                        <li><strong>Operable:</strong> Buttons must be keyboard accessible (WCAG 2.1.1)</li>
+                        <li><strong>Focus Indicators:</strong> Buttons must have visible focus indicators (WCAG 2.4.7)</li>
+                        <li><strong>Name, Role, Value:</strong> Buttons must have clear, descriptive text (WCAG 4.1.2)</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This button example includes:</p>
+                    <ul>
+                        <li>Proper semantic HTML using the <code>&lt;button&gt;</code> element</li>
+                        <li>High contrast colors for visibility</li>
+                        <li>Clear focus states for keyboard navigation</li>
+                        <li>Descriptive text that indicates the purpose</li>
+                        <li>Appropriate padding for easy touch target (44px × 44px minimum, per WCAG 2.5.5)</li>
+                    </ul>
+                    
+                    <h3>Additional Guidelines for Icon Buttons</h3>
+                    <ul>
+                        <li><strong>Text Alternative (WCAG 1.1.1):</strong> Icon-only buttons must have a text alternative via <code>aria-label</code> or similar</li>
+                        <li><strong>Decorative Images (WCAG 1.1.1):</strong> Decorative elements should be hidden from screen readers with <code>aria-hidden="true"</code></li>
+                        <li><strong>Touch Target Size (WCAG 2.5.5):</strong> Icon buttons must have sufficient size for touch interaction</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes for Icon Buttons</h3>
+                    <p>The icon button examples include:</p>
+                    <ul>
+                        <li>Proper semantic <code>&lt;button&gt;</code> element</li>
+                        <li>Accessible name provided with <code>aria-label</code></li>
+                        <li>SVG icons marked as decorative with <code>aria-hidden="true"</code></li>
+                        <li>Sufficient touch target size (44px × 44px)</li>
+                        <li>Visual feedback on hover, focus, and active states</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="text-input" class="component">
+            <h2>Accessible Text Input</h2>
+            
+            <div class="example">
+                <div class="form-group">
+                    <label for="demo-input">Enter your name:</label>
+                    <input type="text" id="demo-input" class="demo-input" 
+                           aria-describedby="input-help" placeholder="e.g., John Doe">
+                    <div id="input-help" class="help-text">Please enter your full name</div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Text Inputs</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Text Inputs</h3>
+                    <ul>
+                        <li><strong>Labels (WCAG 3.3.2):</strong> All form controls must have descriptive labels</li>
+                        <li><strong>Error Identification (WCAG 3.3.1):</strong> Input errors must be clearly identified</li>
+                        <li><strong>Error Suggestions (WCAG 3.3.3):</strong> Provide suggestions for fixing errors</li>
+                        <li><strong>Focus Indicators (WCAG 2.4.7):</strong> Inputs must have visible focus indicators</li>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Ensure proper accessibility information</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This text input example includes:</p>
+                    <ul>
+                        <li>Properly associated <code>&lt;label&gt;</code> using the <code>for</code> attribute</li>
+                        <li>Descriptive placeholder text (as a supplement, not a replacement for labels)</li>
+                        <li>Help text associated with the input using <code>aria-describedby</code></li>
+                        <li>Clear focus states for keyboard navigation</li>
+                        <li>Sufficient color contrast for all elements</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="checkboxes" class="component">
+            <h2>Accessible Checkboxes</h2>
+            
+            <div class="example">
+                <fieldset class="checkbox-group">
+                    <legend>Select your interests:</legend>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="interest-tech" name="interests" value="technology">
+                        <label for="interest-tech">Technology</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="interest-sports" name="interests" value="sports">
+                        <label for="interest-sports">Sports</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="interest-music" name="interests" value="music">
+                        <label for="interest-music">Music</label>
+                    </div>
+                    
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="interest-travel" name="interests" value="travel" aria-describedby="travel-note">
+                        <label for="interest-travel">Travel</label>
+                        <div id="travel-note" class="help-text">Includes both domestic and international travel</div>
+                    </div>
+                </fieldset>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Checkboxes</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Checkboxes</h3>
+                    <ul>
+                        <li><strong>Proper Grouping (WCAG 1.3.1):</strong> Related checkboxes should be grouped with fieldset and legend</li>
+                        <li><strong>Labels (WCAG 3.3.2):</strong> Each checkbox must have a descriptive label</li>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> Checkboxes must be operable via keyboard</li>
+                        <li><strong>Focus Indicators (WCAG 2.4.7):</strong> Checkboxes must have visible focus indicators</li>
+                        <li><strong>Large Touch Targets (WCAG 2.5.5):</strong> Ensure sufficient size for touch interaction</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This checkbox example includes:</p>
+                    <ul>
+                        <li>Semantic grouping with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code></li>
+                        <li>Properly associated labels using the <code>for</code> attribute</li>
+                        <li>Enhanced focus states for keyboard navigation</li>
+                        <li>Sufficient spacing for touch targets</li>
+                        <li>Additional description for one option using <code>aria-describedby</code></li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="select" class="component">
+            <h2>Accessible Dropdown/Select</h2>
+            
+            <div class="example">
+                <div class="select-container">
+                    <h3>Native Select Element</h3>
+                    <div class="form-group">
+                        <label for="native-select">Choose a country:</label>
+                        <select id="native-select" class="demo-select" aria-describedby="select-help">
+                            <option value="">Please select a country</option>
+                            <option value="us">United States</option>
+                            <option value="ca">Canada</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="au">Australia</option>
+                            <option value="jp">Japan</option>
+                        </select>
+                        <div id="select-help" class="help-text">Select your country of residence</div>
+                    </div>
+                    
+                    <h3>Custom Dropdown</h3>
+                    <div class="form-group">
+                        <label id="custom-select-label">Choose a language:</label>
+                        <div class="custom-select-wrapper">
+                            <button type="button" 
+                                    class="custom-select-button" 
+                                    aria-haspopup="listbox" 
+                                    aria-labelledby="custom-select-label custom-select-button"
+                                    id="custom-select-button">
+                                Select a language
+                            </button>
+                            <ul class="custom-select-options" 
+                                role="listbox" 
+                                aria-labelledby="custom-select-label" 
+                                id="custom-select-listbox" 
+                                tabindex="-1">
+                                <li role="option" id="option-en" data-value="en">English</li>
+                                <li role="option" id="option-es" data-value="es">Spanish</li>
+                                <li role="option" id="option-fr" data-value="fr">French</li>
+                                <li role="option" id="option-de" data-value="de">German</li>
+                                <li role="option" id="option-zh" data-value="zh">Chinese</li>
+                            </ul>
+                        </div>
+                        <div class="help-text">Select your preferred language</div>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Dropdowns/Selects</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Dropdowns</h3>
+                    <ul>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> Must be fully operable via keyboard</li>
+                        <li><strong>Focus Management (WCAG 2.4.3):</strong> Focus must move in a logical sequence</li>
+                        <li><strong>Focus Visibility (WCAG 2.4.7):</strong> Focus indicators must be visible</li>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Proper ARIA roles and states for custom dropdowns</li>
+                        <li><strong>Status Messages (WCAG 4.1.3):</strong> Changes in state must be announced to screen readers</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This example includes two approaches:</p>
+                    
+                    <h4>1. Native Select Element</h4>
+                    <ul>
+                        <li>Uses the browser's built-in <code>&lt;select&gt;</code> element which has excellent accessibility support</li>
+                        <li>Properly labeled with <code>&lt;label&gt;</code> and <code>for</code> attribute</li>
+                        <li>Additional context provided with <code>aria-describedby</code></li>
+                        <li>Minimal styling to maintain accessibility while improving appearance</li>
+                    </ul>
+                    
+                    <h4>2. Custom Dropdown</h4>
+                    <ul>
+                        <li>Implements the ARIA design pattern for a <a href="https://www.w3.org/WAI/ARIA/apg/patterns/listbox/" target="_blank">Listbox</a></li>
+                        <li>Uses appropriate ARIA roles: <code>listbox</code> and <code>option</code></li>
+                        <li>Manages focus appropriately when opened/closed</li>
+                        <li>Supports keyboard navigation (arrow keys, Enter, Escape)</li>
+                        <li>Announces selection changes to screen readers</li>
+                    </ul>
+                    
+                    <p><strong>Note:</strong> When possible, use the native select element as it has the best built-in accessibility. Custom dropdowns should only be used when additional styling or functionality is required, and must be carefully implemented to maintain accessibility.</p>
+                </div>
+            </details>
+        </section>
+
+        <section id="progress" class="component">
+            <h2>Accessible Progress Bars</h2>
+            
+            <div class="example">
+                <div class="progress-container">
+                    <h3>Determinate Progress Bar</h3>
+                    <label id="progress-label" for="progress-control">Download progress:</label>
+                    <div class="progress-wrapper">
+                        <div class="progress" 
+                             id="progress-control" 
+                             role="progressbar" 
+                             aria-labelledby="progress-label" 
+                             aria-valuenow="65" 
+                             aria-valuemin="0" 
+                             aria-valuemax="100">
+                            <div class="progress-bar" style="width: 65%"></div>
+                        </div>
+                        <div class="progress-text">65%</div>
+                    </div>
+                    <div class="progress-controls">
+                        <button type="button" class="progress-button" data-action="decrease">Decrease</button>
+                        <button type="button" class="progress-button" data-action="increase">Increase</button>
+                    </div>
+                    
+                    <h3>Indeterminate Progress Bar</h3>
+                    <div class="progress-wrapper">
+                        <div class="progress indeterminate" 
+                             role="progressbar" 
+                             aria-label="Loading content" 
+                             aria-busy="true">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <div class="progress-text">Loading...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Progress Bars</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Progress Bars</h3>
+                    <ul>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Progress bars must have proper roles and states</li>
+                        <li><strong>Status Messages (WCAG 4.1.3):</strong> Changes in progress must be announced to screen readers</li>
+                        <li><strong>Non-text Contrast (WCAG 1.4.11):</strong> Visual indicators must have sufficient contrast</li>
+                        <li><strong>Adaptable (WCAG 1.3.1):</strong> Information must be available programmatically</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This example includes two types of progress bars:</p>
+                    
+                    <h4>1. Determinate Progress Bar</h4>
+                    <ul>
+                        <li>Uses <code>role="progressbar"</code> to identify the element as a progress indicator</li>
+                        <li>Provides current value with <code>aria-valuenow</code></li>
+                        <li>Defines range with <code>aria-valuemin</code> and <code>aria-valuemax</code></li>
+                        <li>Associates with a label using <code>aria-labelledby</code></li>
+                        <li>Includes text representation of the progress value</li>
+                        <li>Updates ARIA attributes when the value changes</li>
+                    </ul>
+                    
+                    <h4>2. Indeterminate Progress Bar</h4>
+                    <ul>
+                        <li>Uses <code>role="progressbar"</code> but omits value attributes</li>
+                        <li>Uses <code>aria-busy="true"</code> to indicate loading state</li>
+                        <li>Provides a label with <code>aria-label</code></li>
+                        <li>Uses animation to indicate ongoing activity</li>
+                    </ul>
+                    
+                    <p>Both progress bars maintain sufficient color contrast and provide both visual and programmatic indication of their state.</p>
+                </div>
+            </details>
+        </section>
+
+        <section id="radio" class="component">
+            <h2>Accessible Radio Buttons</h2>
+            
+            <div class="example">
+                <fieldset class="radio-group">
+                    <legend>Select your preferred contact method:</legend>
+                    
+                    <div class="radio-item">
+                        <input type="radio" id="contact-email" name="contact-method" value="email">
+                        <label for="contact-email">Email</label>
+                    </div>
+                    
+                    <div class="radio-item">
+                        <input type="radio" id="contact-phone" name="contact-method" value="phone">
+                        <label for="contact-phone">Phone</label>
+                    </div>
+                    
+                    <div class="radio-item">
+                        <input type="radio" id="contact-text" name="contact-method" value="text">
+                        <label for="contact-text">Text message</label>
+                    </div>
+                    
+                    <div class="radio-item">
+                        <input type="radio" id="contact-mail" name="contact-method" value="mail" aria-describedby="mail-note">
+                        <label for="contact-mail">Postal mail</label>
+                        <div id="mail-note" class="help-text">Delivery may take 3-5 business days</div>
+                    </div>
+                </fieldset>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Radio Buttons</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Radio Buttons</h3>
+                    <ul>
+                        <li><strong>Proper Grouping (WCAG 1.3.1):</strong> Related radio buttons must be grouped with fieldset and legend</li>
+                        <li><strong>Labels (WCAG 3.3.2):</strong> Each radio button must have a descriptive label</li>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> Radio buttons must be operable via keyboard (Tab to group, arrow keys to select)</li>
+                        <li><strong>Focus Indicators (WCAG 2.4.7):</strong> Radio buttons must have visible focus indicators</li>
+                        <li><strong>Large Touch Targets (WCAG 2.5.5):</strong> Ensure sufficient size for touch interaction</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This radio button example includes:</p>
+                    <ul>
+                        <li>Semantic grouping with <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> to provide context</li>
+                        <li>Properly associated labels using the <code>for</code> attribute</li>
+                        <li>Enhanced focus states for keyboard navigation</li>
+                        <li>Sufficient spacing for touch targets</li>
+                        <li>Additional description for one option using <code>aria-describedby</code></li>
+                        <li>Consistent name attribute to create a logical group</li>
+                        <li>Custom styling that maintains accessibility</li>
+                    </ul>
+                    
+                    <h3>Keyboard Navigation</h3>
+                    <ul>
+                        <li><strong>Tab:</strong> Move focus to the radio button group</li>
+                        <li><strong>Arrow keys:</strong> Move between radio buttons within the group</li>
+                        <li><strong>Space:</strong> Select the focused radio button</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="table" class="component">
+            <h2>Accessible Data Table</h2>
+            
+            <div class="example table-example">
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 id="product-table-title">Product Comparison</h3>
+                        <p id="product-table-desc">Compare features and prices of our most popular products.</p>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table" aria-labelledby="product-table-title" aria-describedby="product-table-desc">
+                            <caption class="sr-only">Product comparison with features and pricing</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Features</th>
+                                    <th scope="col">Rating</th>
+                                    <th scope="col">Availability</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Basic Model</th>
+                                    <td>$99.99</td>
+                                    <td>Standard features, 1-year warranty</td>
+                                    <td>3.5/5</td>
+                                    <td>In Stock</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Premium Model</th>
+                                    <td>$199.99</td>
+                                    <td>Advanced features, 2-year warranty, free shipping</td>
+                                    <td>4.5/5</td>
+                                    <td>Limited Stock</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Professional Model</th>
+                                    <td>$299.99</td>
+                                    <td>All features, 3-year warranty, priority support</td>
+                                    <td>4.8/5</td>
+                                    <td>Pre-order</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Enterprise Model</th>
+                                    <td>$499.99</td>
+                                    <td>Custom features, 5-year warranty, dedicated support</td>
+                                    <td>4.9/5</td>
+                                    <td>Out of Stock</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-controls">
+                        <button type="button" class="table-button" id="sort-price">Sort by Price</button>
+                        <button type="button" class="table-button" id="sort-rating">Sort by Rating</button>
+                        <button type="button" class="table-button" id="filter-available">Show Available Only</button>
+                        <button type="button" class="table-button" id="reset-table">Reset Table</button>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Data Tables</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Tables</h3>
+                    <ul>
+                        <li><strong>Info and Relationships (WCAG 1.3.1):</strong> Use proper table markup with headers and cells</li>
+                        <li><strong>Meaningful Sequence (WCAG 1.3.2):</strong> Ensure logical reading order</li>
+                        <li><strong>Identify Purpose (WCAG 1.3.6):</strong> Clearly identify the table's purpose</li>
+                        <li><strong>Resize Text (WCAG 1.4.4):</strong> Table must be usable when text is resized</li>
+                        <li><strong>Keyboard Accessible (WCAG 2.1.1):</strong> Table interactions must work with keyboard</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This data table example includes:</p>
+                    <ul>
+                        <li>Proper semantic structure with <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;th&gt;</code>, and <code>&lt;td&gt;</code> elements</li>
+                        <li>Appropriate <code>scope</code> attributes on header cells (scope="col" for column headers, scope="row" for row headers)</li>
+                        <li>Table caption for screen readers using <code>&lt;caption&gt;</code></li>
+                        <li>Associated header text using <code>aria-labelledby</code></li>
+                        <li>Additional description using <code>aria-describedby</code></li>
+                        <li>Responsive design that allows horizontal scrolling on small screens</li>
+                        <li>Sufficient color contrast for all text</li>
+                        <li>Interactive features (sorting, filtering) that maintain accessibility</li>
+                        <li>Zebra striping for easier visual tracking across rows</li>
+                    </ul>
+                    
+                    <h3>Screen Reader Considerations</h3>
+                    <p>Screen readers will announce:</p>
+                    <ul>
+                        <li>The table's title and description</li>
+                        <li>The number of rows and columns</li>
+                        <li>Header information as users navigate through cells</li>
+                        <li>Changes to the table when sorting or filtering</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="tabs" class="component">
+            <h2>Accessible Tabs</h2>
+            
+            <div class="example tabs-example">
+                <div class="tabs-container">
+                    <div class="tabs-header" role="tablist" aria-label="Product information">
+                        <button id="tab-1" class="tab-button" role="tab" aria-selected="true" aria-controls="panel-1">
+                            Description
+                        </button>
+                        <button id="tab-2" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-2" tabindex="-1">
+                            Specifications
+                        </button>
+                        <button id="tab-3" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-3" tabindex="-1">
+                            Reviews
+                        </button>
+                        <button id="tab-4" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-4" tabindex="-1">
+                            Support
+                        </button>
+                    </div>
+                    
+                    <div class="tabs-content">
+                        <div id="panel-1" class="tab-panel" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
+                            <h3>Product Description</h3>
+                            <p>This premium product offers exceptional quality and performance. Designed with user comfort in mind, it features an ergonomic design and intuitive controls.</p>
+                            <p>Key highlights include:</p>
+                            <ul>
+                                <li>Durable construction with premium materials</li>
+                                <li>Energy-efficient operation</li>
+                                <li>Smart connectivity features</li>
+                                <li>Compact and stylish design</li>
+                            </ul>
+                        </div>
+                        
+                        <div id="panel-2" class="tab-panel" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden>
+                            <h3>Technical Specifications</h3>
+                            <table class="specs-table">
+                                <caption class="sr-only">Product specifications</caption>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Dimensions</th>
+                                        <td>10" × 8" × 4"</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Weight</th>
+                                        <td>2.5 lbs</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Material</th>
+                                        <td>Aluminum and high-grade polymer</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Power</th>
+                                        <td>100-240V, 50/60Hz</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Warranty</th>
+                                        <td>2 years limited</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div id="panel-3" class="tab-panel" role="tabpanel" aria-labelledby="tab-3" tabindex="0" hidden>
+                            <h3>Customer Reviews</h3>
+                            <div class="review">
+                                <div class="review-header">
+                                    <span class="review-name">Sarah J.</span>
+                                    <span class="review-rating">★★★★★</span>
+                                </div>
+                                <p>Absolutely love this product! It exceeded my expectations in every way. The quality is outstanding and it's so easy to use.</p>
+                            </div>
+                            <div class="review">
+                                <div class="review-header">
+                                    <span class="review-name">Michael T.</span>
+                                    <span class="review-rating">★★★★☆</span>
+                                </div>
+                                <p>Great product overall. Durable and well-designed. The only minor issue is that setup took a bit longer than expected.</p>
+                            </div>
+                        </div>
+                        
+                        <div id="panel-4" class="tab-panel" role="tabpanel" aria-labelledby="tab-4" tabindex="0" hidden>
+                            <h3>Support Information</h3>
+                            <p>Our customer support team is available to help with any questions or issues you may have.</p>
+                            <h4>Contact Options:</h4>
+                            <ul>
+                                <li><strong>Phone:</strong> 1-800-555-0123 (Mon-Fri, 9am-5pm)</li>
+                                <li><strong>Email:</strong> support@example.com</li>
+                                <li><strong>Chat:</strong> Available on our website 24/7</li>
+                            </ul>
+                            <p>For warranty claims, please have your order number and purchase date ready.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Tabs</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Tabs</h3>
+                    <ul>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> Tabs must be fully operable via keyboard</li>
+                        <li><strong>Focus Management (WCAG 2.4.3):</strong> Focus must move in a logical sequence</li>
+                        <li><strong>Focus Visibility (WCAG 2.4.7):</strong> Focus indicators must be visible</li>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Proper ARIA roles and states for tabs</li>
+                        <li><strong>Info and Relationships (WCAG 1.3.1):</strong> Relationship between tabs and panels must be programmatically determined</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This tabs component follows the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/" target="_blank">WAI-ARIA Tabs Pattern</a> and includes:</p>
+                    <ul>
+                        <li>Proper ARIA roles: <code>tablist</code>, <code>tab</code>, and <code>tabpanel</code></li>
+                        <li>Appropriate ARIA states: <code>aria-selected</code>, <code>aria-controls</code>, and <code>aria-labelledby</code></li>
+                        <li>Keyboard navigation:
+                            <ul>
+                                <li><strong>Tab/Shift+Tab:</strong> Move focus into and out of the tablist</li>
+                                <li><strong>Arrow keys:</strong> Navigate between tabs when focus is in the tablist</li>
+                                <li><strong>Space/Enter:</strong> Activate the tab that has focus</li>
+                            </ul>
+                        </li>
+                        <li>Focus management that follows the roving tabindex pattern</li>
+                        <li>Hidden panels use the <code>hidden</code> attribute to ensure they're properly hidden from all users</li>
+                        <li>Visible focus indicators for keyboard users</li>
+                        <li>Semantic heading structure within each panel</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="switch" class="component">
+            <h2>Accessible Switch (Toggle)</h2>
+            
+            <div class="example">
+                <div class="switch-container">
+                    <h3>Application Settings</h3>
+                    
+                    <div class="switch-group">
+                        <div class="switch-item">
+                            <span id="notifications-label" class="switch-label">Enable notifications</span>
+                            <button type="button" 
+                                    role="switch" 
+                                    aria-checked="true" 
+                                    aria-labelledby="notifications-label" 
+                                    class="switch-button" 
+                                    id="notifications-switch">
+                                <span class="switch-thumb"></span>
+                                <span class="sr-only">Toggle notifications</span>
+                            </button>
+                        </div>
+                        
+                        <div class="switch-item">
+                            <span id="darkmode-label" class="switch-label">Dark mode</span>
+                            <button type="button" 
+                                    role="switch" 
+                                    aria-checked="false" 
+                                    aria-labelledby="darkmode-label" 
+                                    class="switch-button" 
+                                    id="darkmode-switch">
+                                <span class="switch-thumb"></span>
+                                <span class="sr-only">Toggle dark mode</span>
+                            </button>
+                        </div>
+                        
+                        <div class="switch-item">
+                            <span id="autoplay-label" class="switch-label">Autoplay videos</span>
+                            <button type="button" 
+                                    role="switch" 
+                                    aria-checked="false" 
+                                    aria-labelledby="autoplay-label" 
+                                    aria-describedby="autoplay-description" 
+                                    class="switch-button" 
+                                    id="autoplay-switch">
+                                <span class="switch-thumb"></span>
+                                <span class="sr-only">Toggle autoplay</span>
+                            </button>
+                            <div id="autoplay-description" class="help-text">Videos will automatically play when this setting is enabled</div>
+                        </div>
+                        
+                        <div class="switch-item">
+                            <span id="location-label" class="switch-label">Location services</span>
+                            <button type="button" 
+                                    role="switch" 
+                                    aria-checked="false" 
+                                    aria-labelledby="location-label" 
+                                    disabled 
+                                    class="switch-button" 
+                                    id="location-switch">
+                                <span class="switch-thumb"></span>
+                                <span class="sr-only">Toggle location services</span>
+                            </button>
+                            <div class="help-text">This setting requires permission from your browser (currently disabled)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Switches</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Switches</h3>
+                    <ul>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Switches must have proper roles and states</li>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> Switches must be operable via keyboard</li>
+                        <li><strong>Focus Indicators (WCAG 2.4.7):</strong> Switches must have visible focus indicators</li>
+                        <li><strong>Labels (WCAG 3.3.2):</strong> Switches must have clear, descriptive labels</li>
+                        <li><strong>Non-text Contrast (WCAG 1.4.11):</strong> Visual state indicators must have sufficient contrast</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This switch component includes:</p>
+                    <ul>
+                        <li>Proper semantic structure using <code>role="switch"</code></li>
+                        <li>Current state indicated with <code>aria-checked</code></li>
+                        <li>Associated labels using <code>aria-labelledby</code></li>
+                        <li>Additional descriptions using <code>aria-describedby</code> where needed</li>
+                        <li>Support for disabled state</li>
+                        <li>Keyboard accessibility (Space/Enter to toggle)</li>
+                        <li>High contrast visual indicators</li>
+                        <li>Animated transitions that respect reduced motion preferences</li>
+                        <li>Touch-friendly size for mobile users</li>
+                    </ul>
+                    
+                    <h3>Why Use a Switch Instead of a Checkbox?</h3>
+                    <p>Switches are best used for:</p>
+                    <ul>
+                        <li>Immediate actions or settings that take effect right away</li>
+                        <li>Binary on/off states (rather than selected/unselected)</li>
+                        <li>Settings that toggle features or modes</li>
+                    </ul>
+                    <p>Checkboxes are better for:</p>
+                    <ul>
+                        <li>Selecting items from a list</li>
+                        <li>Options that will be submitted as part of a form</li>
+                        <li>When multiple related options can be selected</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="slider" class="component">
+            <h2>Accessible Slider (Range Input)</h2>
+            
+            <div class="example">
+                <div class="slider-container">
+                    <h3>Adjust Settings</h3>
+                    
+                    <div class="slider-group">
+                        <div class="slider-item">
+                            <label id="volume-label" for="volume-slider">Volume</label>
+                            <div class="slider-controls">
+                                <input type="range" 
+                                       id="volume-slider" 
+                                       class="slider-input" 
+                                       min="0" 
+                                       max="100" 
+                                       value="50" 
+                                       aria-labelledby="volume-label" 
+                                       aria-valuemin="0" 
+                                       aria-valuemax="100" 
+                                       aria-valuenow="50" 
+                                       aria-valuetext="50 percent">
+                                <div class="slider-value" aria-hidden="true">50%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="slider-item">
+                            <label id="brightness-label" for="brightness-slider">Brightness</label>
+                            <div class="slider-controls">
+                                <input type="range" 
+                                       id="brightness-slider" 
+                                       class="slider-input" 
+                                       min="0" 
+                                       max="100" 
+                                       value="75" 
+                                       step="5" 
+                                       aria-labelledby="brightness-label" 
+                                       aria-valuemin="0" 
+                                       aria-valuemax="100" 
+                                       aria-valuenow="75" 
+                                       aria-valuetext="75 percent">
+                                <div class="slider-value" aria-hidden="true">75%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="slider-item">
+                            <label id="temperature-label" for="temperature-slider">Temperature (°C)</label>
+                            <div class="slider-controls">
+                                <input type="range" 
+                                       id="temperature-slider" 
+                                       class="slider-input" 
+                                       min="15" 
+                                       max="30" 
+                                       value="22" 
+                                       step="0.5" 
+                                       aria-labelledby="temperature-label" 
+                                       aria-valuemin="15" 
+                                       aria-valuemax="30" 
+                                       aria-valuenow="22" 
+                                       aria-valuetext="22 degrees Celsius">
+                                <div class="slider-value" aria-hidden="true">22°C</div>
+                            </div>
+                            <div class="slider-ticks">
+                                <span class="tick-mark" style="left: 0%">15°C</span>
+                                <span class="tick-mark" style="left: 33%">20°C</span>
+                                <span class="tick-mark" style="left: 67%">25°C</span>
+                                <span class="tick-mark" style="left: 100%">30°C</span>
+                            </div>
+                        </div>
+                        
+                        <div class="slider-item">
+                            <label id="zoom-label" for="zoom-slider">Zoom Level</label>
+                            <div class="slider-controls">
+                                <button type="button" class="slider-button" aria-label="Decrease zoom" id="zoom-decrease">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+                                        <path d="M19 13H5v-2h14v2z"/>
+                                    </svg>
+                                </button>
+                                <input type="range" 
+                                       id="zoom-slider" 
+                                       class="slider-input" 
+                                       min="50" 
+                                       max="200" 
+                                       value="100" 
+                                       step="10" 
+                                       aria-labelledby="zoom-label" 
+                                       aria-valuemin="50" 
+                                       aria-valuemax="200" 
+                                       aria-valuenow="100" 
+                                       aria-valuetext="100 percent">
+                                <button type="button" class="slider-button" aria-label="Increase zoom" id="zoom-increase">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                                    </svg>
+                                </button>
+                                <div class="slider-value" aria-hidden="true">100%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Sliders</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Sliders</h3>
+                    <ul>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> Sliders must be operable via keyboard (arrow keys, Home/End)</li>
+                        <li><strong>Focus Indicators (WCAG 2.4.7):</strong> Sliders must have visible focus indicators</li>
+                        <li><strong>Labels (WCAG 3.3.2):</strong> Sliders must have clear, descriptive labels</li>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Slider state and value must be programmatically determined</li>
+                        <li><strong>Non-text Contrast (WCAG 1.4.11):</strong> Slider controls must have sufficient contrast</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This slider component includes:</p>
+                    <ul>
+                        <li>Native <code>&lt;input type="range"&gt;</code> for maximum compatibility</li>
+                        <li>Proper labeling with associated <code>&lt;label&gt;</code> elements</li>
+                        <li>ARIA attributes to enhance screen reader experience:
+                            <ul>
+                                <li><code>aria-valuemin</code>, <code>aria-valuemax</code>, <code>aria-valuenow</code></li>
+                                <li><code>aria-valuetext</code> for human-readable value descriptions</li>
+                            </ul>
+                        </li>
+                        <li>Visual value display that updates in real-time</li>
+                        <li>Enhanced styling with custom thumb and track</li>
+                        <li>Tick marks for reference points on applicable sliders</li>
+                        <li>Increment/decrement buttons for fine control</li>
+                        <li>Appropriate step values for different use cases</li>
+                    </ul>
+                    
+                    <h3>Keyboard Navigation</h3>
+                    <ul>
+                        <li><strong>Left/Down Arrow:</strong> Decrease value by one step</li>
+                        <li><strong>Right/Up Arrow:</strong> Increase value by one step</li>
+                        <li><strong>Home:</strong> Set to minimum value</li>
+                        <li><strong>End:</strong> Set to maximum value</li>
+                        <li><strong>Page Up:</strong> Increase by larger step (10% of range)</li>
+                        <li><strong>Page Down:</strong> Decrease by larger step (10% of range)</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="avatar" class="component">
+            <h2>Accessible Avatars</h2>
+            
+            <div class="example">
+                <div class="avatar-container">
+                    <h3>User Avatars</h3>
+                    
+                    <div class="avatar-group">
+                        <!-- Image Avatar -->
+                        <div class="avatar-item">
+                            <div class="avatar-wrapper">
+                                <img src="https://i.pravatar.cc/150?img=1" 
+                                     alt="Profile photo of Alex Johnson" 
+                                     class="avatar-image">
+                                <span class="avatar-status online" aria-hidden="true"></span>
+                            </div>
+                            <div class="avatar-info">
+                                <div class="avatar-name">Alex Johnson</div>
+                                <div class="avatar-role">Administrator</div>
+                                <div class="avatar-status-text">Online</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Initials Avatar -->
+                        <div class="avatar-item">
+                            <div class="avatar-wrapper">
+                                <div class="avatar-initials" aria-hidden="true">
+                                    <span>SL</span>
+                                </div>
+                                <span class="avatar-status away" aria-hidden="true"></span>
+                            </div>
+                            <div class="avatar-info">
+                                <div class="avatar-name">Sam Lee</div>
+                                <div class="avatar-role">Editor</div>
+                                <div class="avatar-status-text">Away</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Icon Avatar -->
+                        <div class="avatar-item">
+                            <div class="avatar-wrapper">
+                                <div class="avatar-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                    </svg>
+                                </div>
+                                <span class="avatar-status offline" aria-hidden="true"></span>
+                            </div>
+                            <div class="avatar-info">
+                                <div class="avatar-name">Guest User</div>
+                                <div class="avatar-role">Viewer</div>
+                                <div class="avatar-status-text">Offline</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Interactive Avatar -->
+                        <div class="avatar-item">
+                            <button class="avatar-button" aria-label="View profile for Taylor Smith">
+                                <div class="avatar-wrapper">
+                                    <img src="https://i.pravatar.cc/150?img=5" 
+                                         alt="" 
+                                         class="avatar-image" 
+                                         aria-hidden="true">
+                                    <span class="avatar-status busy" aria-hidden="true"></span>
+                                </div>
+                            </button>
+                            <div class="avatar-info">
+                                <div class="avatar-name">Taylor Smith</div>
+                                <div class="avatar-role">Contributor</div>
+                                <div class="avatar-status-text">Busy</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Group Avatar -->
+                        <div class="avatar-item">
+                            <div class="avatar-stack" aria-label="Project team with 3 members">
+                                <div class="stacked-avatar">
+                                    <img src="https://i.pravatar.cc/150?img=3" 
+                                         alt="" 
+                                         class="avatar-image" 
+                                         aria-hidden="true">
+                                </div>
+                                <div class="stacked-avatar">
+                                    <img src="https://i.pravatar.cc/150?img=4" 
+                                         alt="" 
+                                         class="avatar-image" 
+                                         aria-hidden="true">
+                                </div>
+                                <div class="stacked-avatar avatar-more">
+                                    <span aria-hidden="true">+2</span>
+                                </div>
+                            </div>
+                            <div class="avatar-info">
+                                <div class="avatar-name">Project Team</div>
+                                <div class="avatar-role">5 members</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Avatars</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Avatars</h3>
+                    <ul>
+                        <li><strong>Text Alternatives (WCAG 1.1.1):</strong> Images must have appropriate alt text</li>
+                        <li><strong>Color Contrast (WCAG 1.4.3):</strong> Text and status indicators must have sufficient contrast</li>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> Interactive avatars must be keyboard accessible</li>
+                        <li><strong>Focus Indicators (WCAG 2.4.7):</strong> Interactive avatars must have visible focus indicators</li>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Interactive avatars must have proper roles and accessible names</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This avatar component includes several variations:</p>
+                    <ul>
+                        <li><strong>Image Avatar:</strong> Uses an actual photo with appropriate alt text</li>
+                        <li><strong>Initials Avatar:</strong> Uses text initials with the full name available to screen readers</li>
+                        <li><strong>Icon Avatar:</strong> Uses a generic icon for users without photos</li>
+                        <li><strong>Interactive Avatar:</strong> Clickable avatar with proper button semantics</li>
+                        <li><strong>Group Avatar:</strong> Represents multiple users with appropriate labeling</li>
+                    </ul>
+                    
+                    <h3>Accessibility Considerations</h3>
+                    <ul>
+                        <li><strong>Alt Text Strategy:</strong>
+                            <ul>
+                                <li>For standalone avatars, use descriptive alt text: "Profile photo of [Name]"</li>
+                                <li>For decorative avatars where the name is already visible nearby, use empty alt text</li>
+                                <li>For purely decorative elements, use aria-hidden="true"</li>
+                            </ul>
+                        </li>
+                        <li><strong>Status Indicators:</strong> Visual status indicators (online/offline) are supplemented with text</li>
+                        <li><strong>Interactive Elements:</strong> Clickable avatars use proper button semantics</li>
+                        <li><strong>Focus States:</strong> Clear visual indication when interactive avatars have keyboard focus</li>
+                        <li><strong>Color Independence:</strong> Status is not conveyed by color alone</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="dialog" class="component">
+            <h2>Accessible Dialogs</h2>
+            
+            <div class="example">
+                <div class="dialog-container">
+                    <h3>Dialog Examples</h3>
+                    
+                    <div class="dialog-buttons">
+                        <button type="button" class="demo-button" id="open-dialog">Open Dialog</button>
+                        <button type="button" class="demo-button" id="open-alert-dialog">Open Alert Dialog</button>
+                    </div>
+                    
+                    <!-- Standard Dialog -->
+                    <div class="dialog-overlay" id="standard-dialog" aria-hidden="true">
+                        <div role="dialog" 
+                             aria-labelledby="dialog-title" 
+                             aria-describedby="dialog-desc" 
+                             aria-modal="true" 
+                             class="dialog">
+                            <div class="dialog-header">
+                                <h2 id="dialog-title">Account Settings</h2>
+                                <button type="button" 
+                                        class="dialog-close" 
+                                        aria-label="Close dialog">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 19 19 17.59 13.41 12z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <div class="dialog-content">
+                                <p id="dialog-desc">Manage your account settings and preferences.</p>
+                                
+                                <form class="dialog-form">
+                                    <div class="form-group">
+                                        <label for="display-name">Display Name</label>
+                                        <input type="text" id="display-name" value="User123">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email-notifications">Email Notifications</label>
+                                        <select id="email-notifications">
+                                            <option value="all">All notifications</option>
+                                            <option value="important">Important only</option>
+                                            <option value="none">None</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="bio">Bio</label>
+                                        <textarea id="bio" rows="3" placeholder="Tell us about yourself"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="dialog-footer">
+                                <button type="button" class="dialog-button secondary" id="dialog-cancel">Cancel</button>
+                                <button type="button" class="dialog-button primary" id="dialog-save">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Alert Dialog -->
+                    <div class="dialog-overlay" id="alert-dialog" aria-hidden="true">
+                        <div role="alertdialog" 
+                             aria-labelledby="alert-title" 
+                             aria-describedby="alert-desc" 
+                             aria-modal="true" 
+                             class="dialog">
+                            <div class="dialog-header alert">
+                                <h2 id="alert-title">Confirm Deletion</h2>
+                            </div>
+                            
+                            <div class="dialog-content">
+                                <div class="alert-icon">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="32" height="32">
+                                        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2V7h2v2z"/>
+                                    </svg>
+                                </div>
+                                <p id="alert-desc">Are you sure you want to delete this item? This action cannot be undone.</p>
+                            </div>
+                            
+                            <div class="dialog-footer">
+                                <button type="button" class="dialog-button secondary" id="alert-cancel">Cancel</button>
+                                <button type="button" class="dialog-button danger" id="alert-confirm">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Dialogs</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Dialogs</h3>
+                    <ul>
+                        <li><strong>Focus Management (WCAG 2.4.3):</strong> Focus must move to the dialog when opened</li>
+                        <li><strong>Focus Containment (WCAG 2.1.2):</strong> Focus must be trapped within the dialog while open</li>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> All dialog controls must be keyboard accessible</li>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Dialogs must have proper ARIA roles and labels</li>
+                        <li><strong>Escape Key (WCAG 2.1.4):</strong> Dialogs should be dismissible with the Escape key</li>
+                        <li><strong>Modal Behavior (WCAG 1.4.13):</strong> Content behind the dialog should be inaccessible</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This dialog component includes:</p>
+                    <ul>
+                        <li><strong>Standard Dialog:</strong> For general content, forms, and settings</li>
+                        <li><strong>Alert Dialog:</strong> For important notifications requiring user confirmation</li>
+                        <li>Proper ARIA roles: <code>role="dialog"</code> or <code>role="alertdialog"</code></li>
+                        <li>Proper labeling with <code>aria-labelledby</code> and <code>aria-describedby</code></li>
+                        <li>Modal behavior with <code>aria-modal="true"</code></li>
+                        <li>Focus management that:
+                            <ul>
+                                <li>Moves focus to the dialog when opened</li>
+                                <li>Traps focus within the dialog while open</li>
+                                <li>Returns focus to the triggering element when closed</li>
+                            </ul>
+                        </li>
+                        <li>Keyboard support:
+                            <ul>
+                                <li>Escape key to close</li>
+                                <li>Tab/Shift+Tab to navigate within the dialog</li>
+                            </ul>
+                        </li>
+                        <li>Visual design that:
+                            <ul>
+                                <li>Clearly separates the dialog from background content</li>
+                                <li>Provides clear visual hierarchy</li>
+                                <li>Includes visible close mechanisms</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h3>Dialog vs. Alert Dialog</h3>
+                    <p><strong>Standard Dialog (<code>role="dialog"</code>):</strong></p>
+                    <ul>
+                        <li>Used for non-critical interactions</li>
+                        <li>May contain complex forms or content</li>
+                        <li>Focus typically starts on the first focusable element</li>
+                    </ul>
+                    
+                    <p><strong>Alert Dialog (<code>role="alertdialog"</code>):</strong></p>
+                    <ul>
+                        <li>Used for critical information requiring immediate attention</li>
+                        <li>Typically contains a warning or error message</li>
+                        <li>Requires user acknowledgment or decision</li>
+                        <li>Focus typically starts on the primary action button</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="tooltip" class="component">
+            <h2>Accessible Tooltips</h2>
+            
+            <div class="example">
+                <div class="tooltip-container">
+                    <h3>Tooltip Examples</h3>
+                    
+                    <div class="tooltip-examples">
+                        <!-- Button with tooltip -->
+                        <div class="tooltip-wrapper">
+                            <button type="button" 
+                                    class="demo-button tooltip-trigger" 
+                                    aria-describedby="tooltip-1">
+                                Help
+                            </button>
+                            <div class="tooltip" id="tooltip-1" role="tooltip">
+                                Get assistance with using this application
+                                <div class="tooltip-arrow"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Icon with tooltip -->
+                        <div class="tooltip-wrapper">
+                            <button type="button" 
+                                    class="icon-button tooltip-trigger" 
+                                    aria-label="Information" 
+                                    aria-describedby="tooltip-2">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                                </svg>
+                            </button>
+                            <div class="tooltip" id="tooltip-2" role="tooltip">
+                                Important information about this feature
+                                <div class="tooltip-arrow"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Text with tooltip -->
+                        <div class="tooltip-wrapper">
+                            <span class="tooltip-trigger text-with-tooltip" 
+                                  tabindex="0" 
+                                  aria-describedby="tooltip-3">
+                                Hover or focus on this text
+                            </span>
+                            <div class="tooltip" id="tooltip-3" role="tooltip">
+                                This tooltip appears when you hover or focus on the text
+                                <div class="tooltip-arrow"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Input with tooltip -->
+                        <div class="tooltip-wrapper input-tooltip">
+                            <label for="password-input">Password</label>
+                            <div class="input-with-tooltip">
+                                <input type="password" 
+                                       id="password-input" 
+                                       class="demo-input tooltip-trigger" 
+                                       aria-describedby="tooltip-4 password-requirements">
+                                <div id="password-requirements" class="sr-only">
+                                    Password must be at least 8 characters with a mix of letters, numbers, and symbols.
+                                </div>
+                            </div>
+                            <div class="tooltip" id="tooltip-4" role="tooltip">
+                                Password must be at least 8 characters with a mix of letters, numbers, and symbols.
+                                <div class="tooltip-arrow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Tooltips</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Tooltips</h3>
+                    <ul>
+                        <li><strong>Text Alternatives (WCAG 1.1.1):</strong> Icon buttons with tooltips must have accessible names</li>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> Tooltips must be accessible via keyboard</li>
+                        <li><strong>Focus Management (WCAG 2.4.3):</strong> Tooltips should appear on focus, not just hover</li>
+                        <li><strong>Content on Hover (WCAG 1.4.13):</strong> Tooltips must:
+                            <ul>
+                                <li>Be dismissible without moving pointer or keyboard focus</li>
+                                <li>Remain visible until dismissed, hover/focus is removed, or content is no longer valid</li>
+                                <li>Persist when the user moves the pointer from the trigger to the tooltip content</li>
+                            </ul>
+                        </li>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Tooltips must have proper ARIA roles and relationships</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This tooltip component includes:</p>
+                    <ul>
+                        <li>Proper ARIA attributes: <code>role="tooltip"</code> and <code>aria-describedby</code></li>
+                        <li>Keyboard accessibility:
+                            <ul>
+                                <li>Tooltips appear on focus, not just hover</li>
+                                <li>Non-interactive elements with tooltips are made focusable with <code>tabindex="0"</code></li>
+                                <li>Tooltips can be dismissed with the Escape key</li>
+                            </ul>
+                        </li>
+                        <li>Visual design:
+                            <ul>
+                                <li>High contrast text for readability</li>
+                                <li>Sufficient padding and spacing</li>
+                                <li>Directional arrow to indicate the relationship to the trigger</li>
+                            </ul>
+                        </li>
+                        <li>Behavior:
+                            <ul>
+                                <li>Tooltips remain visible when moving from trigger to tooltip content</li>
+                                <li>Tooltips can be persistent when needed for complex information</li>
+                                <li>Tooltips are positioned to avoid obscuring important content</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h3>When to Use Tooltips</h3>
+                    <p>Tooltips are best used for:</p>
+                    <ul>
+                        <li>Providing additional context for buttons or icons</li>
+                        <li>Explaining form fields or input requirements</li>
+                        <li>Clarifying terminology or features</li>
+                        <li>Providing hints without cluttering the interface</li>
+                    </ul>
+                    
+                    <p>Tooltips should <strong>not</strong> be used for:</p>
+                    <ul>
+                        <li>Essential information required to complete a task</li>
+                        <li>Complex content that requires interaction</li>
+                        <li>Critical warnings or error messages</li>
+                        <li>Information that all users need to see</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <section id="badge" class="component">
+            <h2>Accessible Badges and Chips</h2>
+            
+            <div class="example">
+                <div class="badge-container">
+                    <h3>Badge Examples</h3>
+                    
+                    <div class="badge-examples">
+                        <!-- Status badges -->
+                        <div class="badge-group">
+                            <h4>Status Badges</h4>
+                            <div class="badge-row">
+                                <span class="badge badge-success">Active</span>
+                                <span class="badge badge-warning">Pending</span>
+                                <span class="badge badge-danger">Failed</span>
+                                <span class="badge badge-info">Info</span>
+                                <span class="badge badge-neutral">Neutral</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Notification badges -->
+                        <div class="badge-group">
+                            <h4>Notification Badges</h4>
+                            <div class="badge-row">
+                                <button class="icon-button" aria-label="Messages (3 unread)">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                                    </svg>
+                                    <span class="notification-badge" aria-hidden="true">3</span>
+                                </button>
+                                
+                                <button class="icon-button" aria-label="Notifications (5 new)">
+                                    <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                                    </svg>
+                                    <span class="notification-badge" aria-hidden="true">5</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Filter chips -->
+                        <div class="badge-group">
+                            <h4>Filter Chips</h4>
+                            <div class="badge-row">
+                                <div class="chip" role="checkbox" aria-checked="true" tabindex="0">
+                                    <span class="chip-text">Design</span>
+                                    <button class="chip-remove" aria-label="Remove Design filter">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+                                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                
+                                <div class="chip" role="checkbox" aria-checked="false" tabindex="0">
+                                    <span class="chip-text">Development</span>
+                                    <button class="chip-remove" aria-label="Remove Development filter">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+                                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                
+                                <div class="chip" role="checkbox" aria-checked="true" tabindex="0">
+                                    <span class="chip-text">Marketing</span>
+                                    <button class="chip-remove" aria-label="Remove Marketing filter">
+                                        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+                                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Input chips -->
+                        <div class="badge-group">
+                            <h4>Input Chips (Tags)</h4>
+                            <div class="input-chip-container">
+                                <div class="input-chip-wrapper" aria-labelledby="tags-label">
+                                    <span id="tags-label" class="sr-only">Selected tags</span>
+                                    <div class="chip input-chip" role="button" tabindex="-1">
+                                        <span class="chip-text">JavaScript</span>
+                                        <button class="chip-remove" aria-label="Remove JavaScript tag">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+                                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="chip input-chip" role="button" tabindex="-1">
+                                        <span class="chip-text">Accessibility</span>
+                                        <button class="chip-remove" aria-label="Remove Accessibility tag">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+                                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <div class="chip input-chip" role="button" tabindex="-1">
+                                        <span class="chip-text">WCAG</span>
+                                        <button class="chip-remove" aria-label="Remove WCAG tag">
+                                            <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16">
+                                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <input type="text" 
+                                           class="chip-input" 
+                                           placeholder="Add tag..." 
+                                           aria-label="Add a new tag">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <details class="wcag-details">
+                <summary>WCAG Guidelines for Badges and Chips</summary>
+                <div class="details-content">
+                    <h3>Key WCAG Requirements for Badges and Chips</h3>
+                    <ul>
+                        <li><strong>Color Contrast (WCAG 1.4.3):</strong> Badge text and background must have sufficient contrast</li>
+                        <li><strong>Color Independence (WCAG 1.4.1):</strong> Information must not be conveyed by color alone</li>
+                        <li><strong>Keyboard Accessibility (WCAG 2.1.1):</strong> Interactive chips must be keyboard accessible</li>
+                        <li><strong>Focus Indicators (WCAG 2.4.7):</strong> Interactive chips must have visible focus indicators</li>
+                        <li><strong>Name, Role, Value (WCAG 4.1.2):</strong> Chips must have proper roles and accessible names</li>
+                        <li><strong>Touch Target Size (WCAG 2.5.5):</strong> Interactive elements must have sufficient size</li>
+                    </ul>
+                    
+                    <h3>Implementation Notes</h3>
+                    <p>This badge/chip component includes several variations:</p>
+                    <ul>
+                        <li><strong>Status Badges:</strong> Simple indicators for status information</li>
+                        <li><strong>Notification Badges:</strong> Numeric indicators for unread or new items</li>
+                        <li><strong>Filter Chips:</strong> Interactive elements for filtering content</li>
+                        <li><strong>Input Chips:</strong> Interactive elements for managing tags or selections</li>
+                    </ul>
+                    
+                    <h3>Accessibility Considerations</h3>
+                    <ul>
+                        <li><strong>Status Badges:</strong>
+                            <ul>
+                                <li>Use semantic HTML to ensure badges are properly announced</li>
+                                <li>Ensure sufficient color contrast between text and background</li>
+                                <li>Don't rely on color alone to convey status (use text)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Notification Badges:</strong>
+                            <ul>
+                                <li>Include the notification count in the accessible name of the associated button</li>
+                                <li>Use <code>aria-hidden="true"</code> on the visual badge since the information is already in the button's accessible name</li>
+                            </ul>
+                        </li>
+                        <li><strong>Interactive Chips:</strong>
+                            <ul>
+                                <li>Use appropriate ARIA roles (<code>role="checkbox"</code> for filter chips)</li>
+                                <li>Ensure keyboard accessibility with proper focus management</li>
+                                <li>Provide clear visual indication of focus and selection states</li>
+                                <li>Ensure remove buttons have descriptive accessible names</li>
+                            </ul>
+                        </li>
+                        <li><strong>Input Chips:</strong>
+                            <ul>
+                                <li>Ensure proper keyboard navigation between chips and input field</li>
+                                <li>Provide clear instructions for adding and removing chips</li>
+                                <li>Announce changes to the chip collection to screen reader users</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <p>This site demonstrates WCAG 2.1 AA conformant web components.</p>
+    </footer>
+</body>
+</html> 
