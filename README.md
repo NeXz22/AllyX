@@ -1,4 +1,4 @@
-# Accessible Web Components
+# AllyX - Accessibility Examples for Web Components
 
 ## Overview
 
