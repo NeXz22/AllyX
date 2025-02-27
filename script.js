@@ -1393,4 +1393,392 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, 1000);
     }
+
+    // Header Menu/Navigation functionality
+    const navMenuButtons = document.querySelectorAll('.nav-menu-button');
+    const submenus = document.querySelectorAll('.submenu');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileSubmenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
+    const mobileSubmenus = document.querySelectorAll('.mobile-submenu');
+
+    // Desktop dropdown menu functionality
+    if (navMenuButtons.length > 0) {
+        navMenuButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const submenuId = this.getAttribute('aria-controls');
+                const submenu = document.getElementById(submenuId);
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                
+                // Close all other submenus
+                navMenuButtons.forEach(otherButton => {
+                    if (otherButton !== this) {
+                        otherButton.setAttribute('aria-expanded', 'false');
+                        const otherSubmenuId = otherButton.getAttribute('aria-controls');
+                        const otherSubmenu = document.getElementById(otherSubmenuId);
+                        otherSubmenu.classList.remove('show');
+                    }
+                });
+                
+                // Toggle current submenu
+                this.setAttribute('aria-expanded', !isExpanded);
+                submenu.classList.toggle('show');
+                
+                // Add event listener for Escape key to close menu
+                if (!isExpanded) {
+                    const firstSubmenuItem = submenu.querySelector('a');
+                    if (firstSubmenuItem) {
+                        // Focus the first item in the submenu
+                        setTimeout(() => {
+                            firstSubmenuItem.focus();
+                        }, 100);
+                    }
+                    
+                    const handleEscape = function(e) {
+                        if (e.key === 'Escape') {
+                            button.setAttribute('aria-expanded', 'false');
+                            submenu.classList.remove('show');
+                            button.focus();
+                            document.removeEventListener('keydown', handleEscape);
+                        }
+                    };
+                    
+                    document.addEventListener('keydown', handleEscape);
+                }
+            });
+        });
+        
+        // Close submenus when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-item')) {
+                navMenuButtons.forEach(button => {
+                    button.setAttribute('aria-expanded', 'false');
+                    const submenuId = button.getAttribute('aria-controls');
+                    const submenu = document.getElementById(submenuId);
+                    submenu.classList.remove('show');
+                });
+            }
+        });
+        
+        // Add keyboard navigation for submenus
+        submenus.forEach(submenu => {
+            const submenuLinks = submenu.querySelectorAll('a');
+            
+            submenuLinks.forEach((link, index) => {
+                link.addEventListener('keydown', function(e) {
+                    // Arrow down: focus next link
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const nextLink = submenuLinks[index + 1] || submenuLinks[0];
+                        nextLink.focus();
+                    }
+                    
+                    // Arrow up: focus previous link
+                    if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prevLink = submenuLinks[index - 1] || submenuLinks[submenuLinks.length - 1];
+                        prevLink.focus();
+                    }
+                    
+                    // Escape: close submenu and focus the button
+                    if (e.key === 'Escape') {
+                        e.preventDefault();
+                        const button = document.querySelector(`[aria-controls="${submenu.id}"]`);
+                        button.setAttribute('aria-expanded', 'false');
+                        submenu.classList.remove('show');
+                        button.focus();
+                    }
+                });
+            });
+        });
+    }
+
+    // Mobile menu functionality
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('show');
+            
+            // Trap focus within the mobile menu when it's open
+            if (!isExpanded) {
+                // Add overlay to prevent scrolling the background
+                const overlay = document.createElement('div');
+                overlay.className = 'mobile-menu-overlay';
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.right = '0';
+                overlay.style.bottom = '0';
+                overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                overlay.style.zIndex = '99';
+                document.body.appendChild(overlay);
+                
+                // Prevent body scrolling
+                document.body.style.overflow = 'hidden';
+                
+                // Handle click on overlay to close menu
+                overlay.addEventListener('click', function() {
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.remove('show');
+                    document.body.removeChild(overlay);
+                    document.body.style.overflow = '';
+                });
+            } else {
+                // Remove overlay and restore scrolling
+                const overlay = document.querySelector('.mobile-menu-overlay');
+                if (overlay) {
+                    document.body.removeChild(overlay);
+                }
+                document.body.style.overflow = '';
+            }
+            
+            // Announce menu state to screen readers
+            const announcement = document.createElement('div');
+            announcement.setAttribute('role', 'status');
+            announcement.setAttribute('aria-live', 'polite');
+            announcement.className = 'sr-only';
+            announcement.textContent = isExpanded ? 'Menu closed' : 'Menu opened';
+            
+            document.body.appendChild(announcement);
+            
+            setTimeout(() => {
+                if (announcement.parentNode) {
+                    document.body.removeChild(announcement);
+                }
+            }, 1000);
+        });
+    }
+
+    // Mobile submenu functionality
+    if (mobileSubmenuToggles.length > 0) {
+        mobileSubmenuToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const submenuId = this.getAttribute('aria-controls');
+                const submenu = document.getElementById(submenuId);
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                
+                this.setAttribute('aria-expanded', !isExpanded);
+                submenu.classList.toggle('show');
+                
+                // Announce submenu state to screen readers
+                const announcement = document.createElement('div');
+                announcement.setAttribute('role', 'status');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.className = 'sr-only';
+                announcement.textContent = isExpanded ? 'Submenu collapsed' : 'Submenu expanded';
+                
+                document.body.appendChild(announcement);
+                
+                setTimeout(() => {
+                    if (announcement.parentNode) {
+                        document.body.removeChild(announcement);
+                    }
+                }, 1000);
+            });
+        });
+    }
+
+    // Tree component functionality
+    const treeItems = document.querySelectorAll('.tree-item');
+    const treeToggles = document.querySelectorAll('.tree-toggle');
+    const treeContents = document.querySelectorAll('.tree-item-content');
+    
+    // Initialize the tree
+    if (treeItems.length > 0) {
+        // Set tabindex on the first item to make it focusable
+        const firstTreeItem = document.querySelector('.tree > .tree-item:first-child > .tree-item-content');
+        if (firstTreeItem) {
+            firstTreeItem.setAttribute('tabindex', '0');
+        }
+        
+        // Make all other items not focusable by default
+        treeContents.forEach(content => {
+            if (content !== firstTreeItem) {
+                content.setAttribute('tabindex', '-1');
+            }
+        });
+        
+        // Add click event to toggle buttons
+        treeToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent the item click event
+                
+                const treeItem = this.closest('.tree-item');
+                toggleTreeItem(treeItem);
+            });
+        });
+        
+        // Add click event to tree items
+        treeContents.forEach(content => {
+            content.addEventListener('click', function() {
+                // Focus this item
+                focusTreeItem(this);
+                
+                // If it has a toggle button, toggle it
+                const treeItem = this.closest('.tree-item');
+                const toggle = treeItem.querySelector('.tree-toggle');
+                
+                if (toggle) {
+                    toggleTreeItem(treeItem);
+                }
+            });
+            
+            // Add keyboard navigation
+            content.addEventListener('keydown', handleTreeKeyDown);
+        });
+    }
+    
+    // Function to toggle a tree item's expanded state
+    function toggleTreeItem(treeItem) {
+        const isExpanded = treeItem.getAttribute('aria-expanded') === 'true';
+        treeItem.setAttribute('aria-expanded', !isExpanded);
+        
+        // Announce the state change to screen readers
+        const itemName = treeItem.querySelector('.tree-item-content span:last-child').textContent;
+        
+        const announcement = document.createElement('div');
+        announcement.setAttribute('role', 'status');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.className = 'sr-only';
+        announcement.textContent = `${itemName} folder ${isExpanded ? 'collapsed' : 'expanded'}`;
+        
+        document.body.appendChild(announcement);
+        
+        setTimeout(() => {
+            if (announcement.parentNode) {
+                document.body.removeChild(announcement);
+            }
+        }, 1000);
+    }
+    
+    // Function to focus a specific tree item
+    function focusTreeItem(treeContent) {
+        // Remove tabindex from all items
+        treeContents.forEach(content => {
+            content.setAttribute('tabindex', '-1');
+        });
+        
+        // Set tabindex on the current item
+        treeContent.setAttribute('tabindex', '0');
+        treeContent.focus();
+    }
+    
+    // Handle keyboard navigation for the tree
+    function handleTreeKeyDown(e) {
+        const treeContent = e.currentTarget;
+        const treeItem = treeContent.closest('.tree-item');
+        const tree = treeContent.closest('.tree');
+        
+        // Get all visible tree items
+        const visibleItems = getVisibleTreeItems(tree);
+        const currentIndex = visibleItems.findIndex(item => item === treeContent);
+        
+        switch (e.key) {
+            case 'ArrowDown':
+                e.preventDefault();
+                // Move to next visible item
+                if (currentIndex < visibleItems.length - 1) {
+                    focusTreeItem(visibleItems[currentIndex + 1]);
+                }
+                break;
+                
+            case 'ArrowUp':
+                e.preventDefault();
+                // Move to previous visible item
+                if (currentIndex > 0) {
+                    focusTreeItem(visibleItems[currentIndex - 1]);
+                }
+                break;
+                
+            case 'ArrowRight':
+                e.preventDefault();
+                // If collapsed, expand
+                if (treeItem.hasAttribute('aria-expanded') && treeItem.getAttribute('aria-expanded') === 'false') {
+                    toggleTreeItem(treeItem);
+                }
+                // If already expanded, move to first child
+                else if (treeItem.hasAttribute('aria-expanded') && treeItem.getAttribute('aria-expanded') === 'true') {
+                    const firstChild = treeItem.querySelector('.tree-group > .tree-item > .tree-item-content');
+                    if (firstChild) {
+                        focusTreeItem(firstChild);
+                    }
+                }
+                break;
+                
+            case 'ArrowLeft':
+                e.preventDefault();
+                // If expanded, collapse
+                if (treeItem.hasAttribute('aria-expanded') && treeItem.getAttribute('aria-expanded') === 'true') {
+                    toggleTreeItem(treeItem);
+                }
+                // If already collapsed, move to parent
+                else {
+                    const parentGroup = treeContent.closest('.tree-group');
+                    if (parentGroup) {
+                        const parentItem = parentGroup.closest('.tree-item');
+                        if (parentItem) {
+                            const parentContent = parentItem.querySelector('.tree-item-content');
+                            focusTreeItem(parentContent);
+                        }
+                    }
+                }
+                break;
+                
+            case 'Home':
+                e.preventDefault();
+                // Move to first visible item
+                if (visibleItems.length > 0) {
+                    focusTreeItem(visibleItems[0]);
+                }
+                break;
+                
+            case 'End':
+                e.preventDefault();
+                // Move to last visible item
+                if (visibleItems.length > 0) {
+                    focusTreeItem(visibleItems[visibleItems.length - 1]);
+                }
+                break;
+                
+            case 'Enter':
+            case ' ':
+                e.preventDefault();
+                // Toggle the item if it has children
+                if (treeItem.hasAttribute('aria-expanded')) {
+                    toggleTreeItem(treeItem);
+                }
+                break;
+        }
+    }
+    
+    // Function to get all visible tree items
+    function getVisibleTreeItems(tree) {
+        const visibleItems = [];
+        
+        // Helper function to recursively find visible items
+        function findVisibleItems(element) {
+            const items = element.children;
+            
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                
+                if (item.classList.contains('tree-item')) {
+                    const content = item.querySelector('.tree-item-content');
+                    visibleItems.push(content);
+                    
+                    // If this item is expanded, also include its children
+                    if (item.getAttribute('aria-expanded') === 'true') {
+                        const group = item.querySelector('.tree-group');
+                        if (group) {
+                            findVisibleItems(group);
+                        }
+                    }
+                }
+            }
+        }
+        
+        findVisibleItems(tree);
+        return visibleItems;
+    }
 }); 

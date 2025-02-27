@@ -2164,4 +2164,468 @@ label {
     .input-chip-wrapper {
         flex-direction: column;
     }
+}
+
+/* Header Menu/Navigation styles */
+.header-menu-example {
+    display: block;
+    padding: 0;
+}
+
+.header-menu-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.demo-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+}
+
+/* Logo styles */
+.logo a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.logo svg {
+    margin-right: 0.5rem;
+}
+
+.logo a:focus {
+    outline: 2px solid white;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Desktop navigation */
+.desktop-nav {
+    display: block;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-menu-link, 
+.nav-menu-button {
+    color: white;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    min-height: 44px;
+}
+
+.nav-menu-link:hover,
+.nav-menu-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-menu-link:focus,
+.nav-menu-button:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.nav-menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.menu-arrow {
+    margin-left: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.nav-menu-button[aria-expanded="true"] .menu-arrow {
+    transform: rotate(180deg);
+}
+
+/* Submenu styles */
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 100;
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    display: none;
+}
+
+.submenu.show {
+    display: block;
+}
+
+.submenu a {
+    color: var(--text-color);
+    padding: 0.75rem 1rem;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.submenu a:hover {
+    background-color: var(--light-gray);
+}
+
+.submenu a:focus {
+    outline: 3px solid var(--focus-color);
+    outline-offset: -3px;
+}
+
+/* Mobile navigation */
+.mobile-nav-container {
+    display: none;
+}
+
+.mobile-menu-toggle {
+    background: none;
+    border: none;
+    width: 44px;
+    height: 44px;
+    padding: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-toggle:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+.menu-icon {
+    position: relative;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.menu-icon::before {
+    transform: translateY(-8px);
+}
+
+.menu-icon::after {
+    transform: translateY(8px);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .menu-icon {
+    background-color: transparent;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .menu-icon::before {
+    transform: rotate(45deg);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .menu-icon::after {
+    transform: rotate(-45deg);
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100%;
+    background-color: white;
+    z-index: 100;
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 4rem 1rem 1rem;
+}
+
+.mobile-menu.show {
+    right: 0;
+}
+
+.mobile-nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-nav-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-nav-link {
+    color: var(--text-color);
+    padding: 1rem;
+    display: block;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.mobile-submenu-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1rem;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-nav-link:focus,
+.mobile-submenu-toggle:focus {
+    outline: 3px solid var(--focus-color);
+    outline-offset: -3px;
+}
+
+.mobile-submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: var(--light-gray);
+    display: none;
+}
+
+.mobile-submenu.show {
+    display: block;
+}
+
+.mobile-submenu a {
+    color: var(--text-color);
+    padding: 0.75rem 1rem 0.75rem 2rem;
+    display: block;
+    text-decoration: none;
+}
+
+.mobile-submenu a:focus {
+    outline: 3px solid var(--focus-color);
+    outline-offset: -3px;
+}
+
+/* Responsive adjustments for header menu */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-nav-container {
+        display: block;
+    }
+}
+
+/* High contrast mode support for header menu */
+@media (forced-colors: active) {
+    .demo-header {
+        border: 1px solid CanvasText;
+    }
+    
+    .nav-menu-link:focus,
+    .nav-menu-button:focus,
+    .mobile-menu-toggle:focus {
+        outline: 2px solid CanvasText;
+    }
+    
+    .submenu {
+        border: 1px solid CanvasText;
+    }
+    
+    .mobile-menu {
+        border-left: 1px solid CanvasText;
+    }
+}
+
+/* Tree component styles */
+.tree-example {
+    display: block;
+    padding: 2rem;
+}
+
+.tree-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.tree-container h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.tree {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.95rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: white;
+}
+
+.tree-group {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.tree-item[aria-expanded="true"] > .tree-group {
+    display: block;
+}
+
+.tree-item-content {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border-color);
+    min-height: 44px;
+}
+
+.tree-item:last-child > .tree-item-content {
+    border-bottom: none;
+}
+
+.tree-item-content:hover {
+    background-color: var(--light-gray);
+}
+
+.tree-item-content:focus-within {
+    outline: 3px solid var(--focus-color);
+    outline-offset: -3px;
+    position: relative;
+    z-index: 1;
+}
+
+.tree-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 4px;
+    border-radius: 4px;
+}
+
+.tree-toggle:focus {
+    outline: 2px solid var(--focus-color);
+    outline-offset: 1px;
+}
+
+.tree-spacer {
+    width: 24px;
+    margin-right: 4px;
+}
+
+.tree-icon {
+    transition: transform 0.2s;
+}
+
+.tree-item[aria-expanded="true"] > .tree-item-content .tree-icon {
+    transform: rotate(90deg);
+}
+
+.folder-icon, .file-icon {
+    margin-right: 8px;
+}
+
+.folder-icon {
+    color: #FFC107;
+}
+
+.file-icon {
+    color: #607D8B;
+}
+
+/* Indentation for nested levels */
+.tree-group .tree-item-content {
+    padding-left: 1.5rem;
+}
+
+.tree-group .tree-group .tree-item-content {
+    padding-left: 3rem;
+}
+
+.tree-group .tree-group .tree-group .tree-item-content {
+    padding-left: 4.5rem;
+}
+
+/* High contrast mode support for tree */
+@media (forced-colors: active) {
+    .tree {
+        border: 1px solid CanvasText;
+    }
+    
+    .tree-item-content {
+        border-bottom: 1px solid CanvasText;
+    }
+    
+    .tree-item-content:focus-within {
+        outline: 2px solid CanvasText;
+    }
+    
+    .tree-toggle:focus {
+        outline: 2px solid CanvasText;
+    }
+    
+    .folder-icon, .file-icon {
+        forced-color-adjust: none;
+    }
+}
+
+/* Responsive adjustments for tree */
+@media (max-width: 768px) {
+    .tree-container {
+        max-width: 100%;
+    }
 } 
